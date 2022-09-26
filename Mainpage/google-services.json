@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "591171842372",
+    "firebase_url": "https://awatar-b6707-default-rtdb.firebaseio.com",
+    "project_id": "awatar-b6707",
+    "storage_bucket": "awatar-b6707.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:591171842372:android:ea09cbcf07fb9c0454a711",
+        "android_client_info": {
+          "package_name": "com.example.mainpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "591171842372-jpr7v5pu9sktuf6crlou8ja4gufqrema.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZebuBZ7bWUPq9CTG4-DyxVxA7Oy0a62I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "591171842372-jpr7v5pu9sktuf6crlou8ja4gufqrema.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

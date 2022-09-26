@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="400dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp"
+
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:id="@+id/updatetext"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:fontFamily="monospace"
+
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:text="ADD CONDUCTOR"
+        ></TextView>
+
+    <EditText
+        android:id="@+id/ipemail"
+        android:layout_width="366dp"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_input"
+        android:hint="name"
+        android:fontFamily="monospace"
+
+        android:padding="3dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/ipname"
+        android:layout_width="364dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_input"
+        android:hint="email"
+        android:fontFamily="monospace"
+
+        android:padding="3dp">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/ippass"
+        android:layout_width="361dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_input"
+        android:hint="password"
+        android:fontFamily="monospace"
+
+        android:padding="3dp">
+
+    </EditText>
+
+    <Button
+        android:id="@+id/Done"
+        android:layout_width="324dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="50dp"
+        android:fontFamily="monospace"
+
+        android:layout_marginTop="10dp"
+        android:text="ADD"></Button>
+</LinearLayout>

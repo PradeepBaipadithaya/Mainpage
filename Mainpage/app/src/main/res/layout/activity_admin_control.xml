@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ui3"
+
+    android:orientation="vertical"
+
+    tools:context=".AdminControl">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/card_view"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="124dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="0dp"
+            android:fontFamily="monospace"
+            android:gravity="center"
+android:text="NAME"
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="133dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/card_view"
+            android:fontFamily="monospace"
+            android:gravity="center"
+            android:padding="5dp"
+
+            android:text="EMAIL"
+
+
+            android:textSize="25sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="118dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
+            android:padding="5dp"
+
+            android:fontFamily="monospace"
+
+            android:text="PASS"
+            android:textSize="25sp"
+
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyler1"
+        android:layout_width="match_parent"
+        android:layout_height="663dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="62dp"
+        android:layout_marginBottom="6dp" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="290dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp">
+
+        <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+            android:id="@+id/add_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="104dp"
+            android:backgroundTint="@color/teal_200"
+            android:text="Operation"
+            app:icon="@drawable/ic__settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_alarm_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="156dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/purple_200"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/add_fab"
+            app:layout_constraintEnd_toEndOf="@+id/add_fab"
+            app:srcCompat="@drawable/ic_person_remove" />
+
+        <TextView
+            android:id="@+id/add_alarm_action_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Delete People"
+            app:layout_constraintBottom_toBottomOf="@+id/add_alarm_fab"
+            app:layout_constraintEnd_toStartOf="@+id/add_alarm_fab"
+            app:layout_constraintTop_toTopOf="@+id/add_alarm_fab" />
+
+        <!--Floating action button for add person-->
+        <!--Make sure that you are constraining this button
+            to the add Alarm FAB button-->
+        <!--Make sure to add backgroundTint attribute to match
+             the entire application color-->
+        <!--because after changing the base application theme
+             the color of the FAB is set Blue as default-->
+
+        <!--Action name text for the add person button-->
+        <!--Make sure that you are constraining this Text
+             to the add Person FAB button-->
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/add_person_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginBottom="4dp"
+            android:backgroundTint="@color/purple_200"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toTopOf="@+id/add_alarm_fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/add_alarm_fab"
+            app:srcCompat="@drawable/ic_person_add" />
+
+        <TextView
+            android:id="@+id/add_person_action_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:text="Add Person"
+            app:layout_constraintBottom_toBottomOf="@+id/add_person_fab"
+            app:layout_constraintEnd_toStartOf="@+id/add_person_fab"
+            app:layout_constraintTop_toTopOf="@+id/add_person_fab" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/update_person"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/purple_200"
+
+            app:fabSize="normal"
+
+            app:layout_constraintBottom_toTopOf="@+id/add_fab"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.358"
+            app:srcCompat="@drawable/ic_baseline_update_24" />
+
+        <TextView
+            android:id="@+id/add_person_action_textt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="Update Person" app:layout_constraintBottom_toBottomOf="@+id/update_person"
+            app:layout_constraintEnd_toStartOf="@+id/update_person"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/add_person_fab"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.242" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</RelativeLayout>
+
