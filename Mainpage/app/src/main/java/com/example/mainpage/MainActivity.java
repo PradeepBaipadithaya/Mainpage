@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         loginp = findViewById(R.id.pass1);
         loginc = findViewById(R.id.pass2);
         logint = findViewById(R.id.pass3);
-        logina = findViewById(R.id.ticket_collector_login);
+        logina = findViewById(R.id.pass6);
 
         logina.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -59,13 +59,13 @@ loginc.setOnClickListener(new View.OnClickListener() {
                 startActivity(i);
             }
         });
-//        logina.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent i =new Intent(MainActivity.this, AdminRegister.class);
-//                startActivity(i);
-//            }
-//        });
+        logina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(MainActivity.this, AdminRegister.class);
+                startActivity(i);
+            }
+        });
     }
 
 }
