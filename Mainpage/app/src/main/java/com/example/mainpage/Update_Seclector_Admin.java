@@ -20,7 +20,8 @@ public class Update_Seclector_Admin extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 cond.animate().setDuration(500).rotationXBy(360f).start();
-                Intent i =new Intent(Update_Seclector_Admin.this, AdminControl.class);
+
+                Intent i =new Intent( Update_Seclector_Admin.this,AdminControl.class);
                 startActivity(i);
             }
         });
