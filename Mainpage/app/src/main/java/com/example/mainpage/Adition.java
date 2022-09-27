@@ -1,7 +1,10 @@
 package com.example.mainpage;
 
-public class adition {
+public class Adition {
     String name,email,pass;
+    public Adition(String name,String email,String pass){
+
+    }
 
     public String getName() {
         return name;

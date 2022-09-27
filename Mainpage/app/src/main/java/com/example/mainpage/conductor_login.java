@@ -27,17 +27,17 @@ public class conductor_login extends AppCompatActivity {
         setContentView(R.layout.activity_conductor_login);
         e1=findViewById(conductoremail);
         e2=findViewById(coductorpass);
-        b=findViewById(R.id.pass6);
+        b=findViewById(R.id.tripbtn);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String emailid=e1.getText().toString();
                 String passwd=e2.getText().toString();
-                myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(emailid)){
-                            final String getpass=snapshot.child(emailid).child("pass").getValue(String.class);
+                            final String getpass=snapshot.child(emailid).child("password").getValue(String.class);
                             if(getpass.equals(passwd)){
                                 Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
                             }

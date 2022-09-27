@@ -16,9 +16,9 @@ import java.util.ArrayList;
 class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     Context context;
-    ArrayList<adition> mList;
+    ArrayList<Adition> mList;
 
-    public MyAdapter(Context context, ArrayList<adition> mList) {
+    public MyAdapter(Context context, ArrayList<Adition> mList) {
         this.mList=mList;
         this.context=context;
 
@@ -33,7 +33,7 @@ class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        adition adi=mList.get(position);
+        Adition adi=mList.get(position);
         holder.name.setText(adi.getName());
         holder.email.setText(adi.getEmail());
         holder.pass.setText(adi.getPass());

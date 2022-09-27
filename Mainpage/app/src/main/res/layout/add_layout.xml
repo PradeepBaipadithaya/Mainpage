@@ -25,7 +25,7 @@
         android:layout_width="366dp"
         android:layout_height="50dp"
         android:background="@drawable/custom_input"
-        android:hint="name"
+        android:hint="email....."
         android:fontFamily="monospace"
 
         android:padding="3dp">
@@ -38,7 +38,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_input"
-        android:hint="email"
+        android:hint="name......"
         android:fontFamily="monospace"
 
         android:padding="3dp">
@@ -51,7 +51,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_input"
-        android:hint="password"
+        android:hint="password.."
         android:fontFamily="monospace"
 
         android:padding="3dp">

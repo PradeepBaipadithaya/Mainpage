@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         loginp = findViewById(R.id.pass1);
         loginc = findViewById(R.id.pass2);
         logint = findViewById(R.id.pass3);
-        logina = findViewById(R.id.pass6);
+        logina = findViewById(R.id.tripbtn);
 
         logina.setOnClickListener(new View.OnClickListener() {
     @Override
@@ -62,7 +62,7 @@ loginc.setOnClickListener(new View.OnClickListener() {
         logina.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(MainActivity.this, AdminRegister.class);
+                Intent i =new Intent(MainActivity.this, Update_Seclector_Admin.class);
                 startActivity(i);
             }
         });
