@@ -37,7 +37,6 @@ this.context=context;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 holder.name.setText(arrcont.get(position).name);
-
          int pos=holder.getAdapterPosition();
         holder.email.setText(arrcont.get(pos).email);
         holder.pass.setText(arrcont.get(pos).paswd);
@@ -70,9 +69,7 @@ holder.name.setText(arrcont.get(position).name);
                             notifyItemChanged(pos);
                             Toast.makeText(context, "Updated Sucessfully", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
-
                         }
-
                     }
                 });
                 dialog.show();
@@ -80,7 +77,6 @@ holder.name.setText(arrcont.get(position).name);
         });
         holder.llrow.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-
             public boolean onLongClick(View view) {
                 AlertDialog.Builder alertDialog= new AlertDialog.Builder(context).setTitle("Delete Conductor").setMessage("Are You Sue  you want to delete").setIcon(R.drawable.ic_person_remove).setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
@@ -91,21 +87,18 @@ holder.name.setText(arrcont.get(position).name);
                 }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
                     }
                 });
                 alertDialog.show();
                 return true;
             }
         });
-
     }
 
     @Override
     public int getItemCount() {
         return arrcont.size();
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder{
         TextView name,email,pass;
         LinearLayout llrow;

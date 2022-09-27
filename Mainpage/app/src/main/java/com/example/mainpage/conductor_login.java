@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.mainpage.R.id.conductoremail;
 import static com.example.mainpage.R.id.coductorpass;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +29,7 @@ public class conductor_login extends AppCompatActivity {
         setContentView(R.layout.activity_conductor_login);
         e1=findViewById(conductoremail);
         e2=findViewById(coductorpass);
-        b=findViewById(R.id.pass6);
+        b=findViewById(R.id.ticket_collector_login);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -38,8 +40,16 @@ public class conductor_login extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(emailid)){
                             final String getpass=snapshot.child(emailid).child("pass").getValue(String.class);
-                            if(getpass.equals(passwd)){
-                                Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
+                            if(getpass.equals(passwd)) {
+                                try {
+                                    Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(conductor_login.this, conductor_location.class);
+                                    intent.putExtra("conductor_email",emailid);
+                                    startActivity(intent);
+                                }
+                                catch(Exception e){
+                                    Toast.makeText(conductor_login.this, ""+e, Toast.LENGTH_SHORT).show();
+                                }
                             }
                         }
                         else{

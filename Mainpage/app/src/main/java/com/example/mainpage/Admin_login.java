@@ -36,7 +36,7 @@ public class Admin_login extends AppCompatActivity {
         setContentView(R.layout.activity_admin_login);
         email=findViewById(R.id.lemail);
         pass=findViewById(R.id.lpass);
-        btn=findViewById(R.id.pass6);
+        btn=findViewById(R.id.ticket_collector_login);
         mAuth=FirebaseAuth.getInstance();
         muser=mAuth.getCurrentUser();
         btn.setOnClickListener(new View.OnClickListener() {

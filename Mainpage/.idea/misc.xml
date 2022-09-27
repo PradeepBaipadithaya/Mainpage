@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_work.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_conductor_location.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_ticket_collector_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_update_seclector_admin.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/add_layout.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/add_layout_1.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/contact_view.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/login_conductor.xml" value="0.22826086956521738" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.328" />
         <entry key="app/src/main/res/drawable/animate.xml" value="0.328" />
         <entry key="app/src/main/res/drawable/card_view.xml" value="0.265" />

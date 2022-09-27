@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.mainpage">
-<uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,6 +19,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mainpage"
         tools:targetApi="31">
+
+        <service
+            android:name=".LocationService"
+            android:enabled="true"
+            android:exported="true"/>
+
+
+        <activity
+            android:name=".conductor_location"
+            android:exported="false" />
+        <activity
+            android:name=".ticket_collector_bus"
+            android:exported="false" />
         <activity
             android:name=".AdminControl1"
             android:exported="false" />
