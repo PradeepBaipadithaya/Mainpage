@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     Button loginp, loginc,logina,logint;
@@ -29,9 +30,13 @@ public class MainActivity extends AppCompatActivity {
 loginp.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
+        try {
             loginp.animate().setDuration(500).rotationXBy(360f).start();
-            Intent i =new Intent(MainActivity.this, LoginConductorActivity.class);
+            Intent i = new Intent(MainActivity.this, passenger_page.class);
             startActivity(i);
+        }catch (Exception e){
+            Toast.makeText(MainActivity.this, ""+e, Toast.LENGTH_SHORT).show();
+        }
 
     }
 });

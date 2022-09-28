@@ -38,7 +38,7 @@
 
 
         <EditText
-            android:id="@+id/num1"
+            android:id="@+id/conductor_num"
             android:layout_width="wrap_content"
             android:layout_height="56dp"
             android:layout_marginTop="30dp"
@@ -79,7 +79,7 @@
         android:layout_marginTop="400dp">
 
         <EditText
-            android:id="@+id/num2"
+            android:id="@+id/conductor_bus_num"
             android:layout_width="wrap_content"
             android:layout_height="57dp"
             android:layout_marginTop="25dp"

@@ -1,8 +1,5 @@
 package com.example.mainpage;
 
-import static com.example.mainpage.R.id.tripcollectoremail;
-import static com.example.mainpage.R.id.tripcollectorpass;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -28,8 +25,8 @@ public class ticket_collector_login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_collector_login);
-        e1=findViewById(tripcollectoremail);
-        e2=findViewById(tripcollectorpass);
+        e1=findViewById(R.id.tripcollectoremail);
+        e2=findViewById(R.id.tripcollectorpass);
         b=findViewById(R.id.tripbtn);
         b.setOnClickListener(new View.OnClickListener() {
             @Override

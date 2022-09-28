@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".conductor_location">
+    tools:context=".passenger_start">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,9 +12,11 @@
         android:gravity="center"
         android:orientation="vertical"
         android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:layout_width="wrap_content"
@@ -38,6 +40,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:text="Stop Service" />
+
+        <Button
+            android:id="@+id/map_button"
+            android:layout_width="194dp"
+            android:layout_height="wrap_content"
+            android:text="Start Map" />
 
 
     </LinearLayout>

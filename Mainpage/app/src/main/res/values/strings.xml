@@ -13,4 +13,5 @@
         to get location updates in the background even when not using the app then grant
         -Allow all the time- permission
     </string>
+    <string name="title_activity_passenger_locate">passenger_locate</string>
 </resources>

@@ -19,14 +19,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Mainpage"
         tools:targetApi="31">
-        <activity
-            android:name=".Trip_collector_work"
-            android:exported="false" />
 
         <service
             android:name=".LocationService"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="${MAPS_API_KEY}" />
 
         <activity
             android:name=".conductor_location"
@@ -56,8 +57,15 @@
             android:name=".conductor_login"
             android:exported="false" />
         <activity
-            android:name=".LoginConductorActivity"
+            android:name=".passenger_page"
             android:exported="false" />
+        <activity
+            android:name=".passenger_start"
+            android:exported="false" />
+        <activity
+            android:name=".passenger_locate"
+            android:exported="false" />
+
         <activity
             android:name=".PassangerActivity"
             android:exported="false" />

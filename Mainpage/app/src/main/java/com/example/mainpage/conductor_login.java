@@ -33,21 +33,18 @@ public class conductor_login extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i =new Intent(conductor_login.this, conductor_location.class);
-                startActivity(i);
                 String emailid=e1.getText().toString();
                 String passwd=e2.getText().toString();
                 myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
-
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(emailid)){
                             final String getpass=snapshot.child(emailid).child("password").getValue(String.class);
                             if(getpass.equals(passwd)){
-                                Intent i =new Intent(conductor_login.this, conductor_location.class);
-                                i.putExtra("conductor_email",emailid);
-                                startActivity(i);
                                 Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(conductor_login.this,conductor_location.class);
+                                intent.putExtra("conductor_email", emailid);
+                                startActivity(intent);
                             }
                         }
                         else{

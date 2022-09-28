@@ -42,17 +42,18 @@ public class LocationService extends Service {
     FusedLocationProviderClient fusedLocationClient;
     LocationRequest locationRequest;
     LocationCallback locationCallback;
-    public DatabaseReference reference;
+//    public DatabaseReference reference;
     public DatabaseReference reference_lat;
     public DatabaseReference reference_long;
 
-    String userID;
+    String userID,role;
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         userID = intent.getStringExtra("conductor_email");
-        reference_lat = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child(""+userID).child("Lat");
-        reference_long = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child(""+userID).child("Long");
+        role = intent.getStringExtra("role");
+        reference_lat = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child(""+role).child(""+userID).child("Lat");
+        reference_long = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child(""+role).child(""+userID).child("Long");
 
         Toast.makeText(this, ""+userID, Toast.LENGTH_SHORT).show();
         return START_STICKY;

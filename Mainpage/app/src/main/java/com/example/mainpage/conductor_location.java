@@ -35,8 +35,8 @@ public class conductor_location extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_conductor_location);
 
-        startServiceBtn = findViewById(R.id.start_service_btn);
-        stopServiceBtn = findViewById(R.id.stop_service_btn);
+        startServiceBtn = findViewById(R.id.start_service_btn_1);
+        stopServiceBtn = findViewById(R.id.stop_service_btn_1);
 
         /**************/
 
@@ -166,7 +166,6 @@ public class conductor_location extends AppCompatActivity {
             }
             return;
         }
-
     }
 
     private void starServiceFunc(){
@@ -176,6 +175,7 @@ public class conductor_location extends AppCompatActivity {
             Intent intent = getIntent();
             String id = intent.getStringExtra("conductor_email");
             mServiceIntent.putExtra("conductor_email",id);
+            mServiceIntent.putExtra("role","Conductor");
             startService(mServiceIntent);
             Toast.makeText(this, getString(R.string.service_start_successfully), Toast.LENGTH_SHORT).show();
         } else {
