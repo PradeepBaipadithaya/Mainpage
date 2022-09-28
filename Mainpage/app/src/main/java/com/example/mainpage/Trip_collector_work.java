@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,18 +16,17 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import java.util.ArrayList;
-
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class AdminControl extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class Trip_collector_work extends AppCompatActivity {
     RecyclerView recyclerView;
-  static ArrayList<ContactModel> arrcont= new ArrayList<>();
+    static ArrayList<ContactModel> arrcont= new ArrayList<>();
 
 
     FloatingActionButton mAddAlarmFab, mAddPersonFab,mupdate;
@@ -41,14 +39,10 @@ public class AdminControl extends AppCompatActivity {
 
     Boolean isAllFabsVisible;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_control);
-
-
-        //Floating Button------------------------------------------------------------------------------------------------>
+        setContentView(R.layout.activity_trip_collector_work);
 
         mAddFab = findViewById(R.id.add_fab);
         mAddAlarmFab = findViewById(R.id.add_alarm_fab);
@@ -68,11 +62,11 @@ public class AdminControl extends AppCompatActivity {
         mAddFab.shrink();
 
 
-
         mAddFab.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        Toast.makeText(Trip_collector_work.this, "PLEASE DONT TRY TO UPADTE BUS NUMBER...ERROR", Toast.LENGTH_SHORT).show();
                         if (!isAllFabsVisible) {
 
                             mAddAlarmFab.show();
@@ -102,40 +96,32 @@ public class AdminControl extends AppCompatActivity {
                     }
                 });
 
-
         mAddPersonFab.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(AdminControl.this, "Person Added", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Trip_collector_work.this, "Person Added", Toast.LENGTH_SHORT).show();
                     }
                 });
-
-
         mAddAlarmFab.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Toast.makeText(AdminControl.this, "Long Press On What You Want To Delete", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Trip_collector_work.this, "Long Press On What You Want To Delete", Toast.LENGTH_SHORT).show();
                     }
                 });
         mupdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                Toast.makeText(AdminControl.this, "Click on What You Want To Delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Trip_collector_work.this, "Click on What You Want To Delete", Toast.LENGTH_SHORT).show();
             }
         });
-
-
-        //Recylcer View ------------------------------------------------------------------------------------->
-
-
-        recyclerView = findViewById(R.id.recyler1);
+        recyclerView = findViewById(R.id.recyler3);
         recyclerView.setLayoutManager( new LinearLayoutManager( this));
-        RecyclerContactAdapter adapter = new RecyclerContactAdapter(this,arrcont);
+        RecyclerContactAdapter_Trip_Collector_work  adapter = new RecyclerContactAdapter_Trip_Collector_work(this,arrcont);
         recyclerView.setAdapter(adapter);
-        DatabaseReference myReff = FirebaseDatabase.getInstance().getReference().child("conductors");
+        DatabaseReference myReff = FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo");
         myReff.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -165,13 +151,12 @@ public class AdminControl extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-
         });
         mAddPersonFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog = new Dialog(AdminControl.this);
-                dialog.setContentView(R.layout.add_layout);
+                Dialog dialog = new Dialog(Trip_collector_work.this);
+                dialog.setContentView(R.layout.add_layout_2);
 
                 EditText name,email,pass;
                 Button btn;
@@ -188,25 +173,26 @@ public class AdminControl extends AppCompatActivity {
                         String email1=email.getText().toString();
                         String pass1=pass.getText().toString();
                         if(name1.isEmpty() || email1.isEmpty() || pass1.isEmpty()){
-                            Toast.makeText(AdminControl.this, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Trip_collector_work.this, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
+                            myRef.child("tripcollectorsinfo").addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                                     if(snapshot.hasChild(email1)){
-                                        Toast.makeText(AdminControl.this, "Email has already registered", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Trip_collector_work.this, "Email has already registered", Toast.LENGTH_SHORT).show();
                                     }
                                     else{
                                         //Updating database
 
-                                        myRef.child("conductors").child(email1).child("email").setValue(name1).toString();
-                                       myRef.child("conductors").child(email1).child("name").setValue(email1).toString();
-                                        myRef.child("conductors").child(email1).child("password").setValue(pass1).toString();                ArrayList<ContactModel> arrcont= new ArrayList<>();
+                                        myRef.child("tripcollectorsinfo").child(name1).child("busnum").setValue(name1).toString();
+                                        myRef.child("tripcollectorsinfo").child(name1).child("conductorname").setValue(email1).toString();
+                                        myRef.child("tripcollectorsinfo").child(name1).child("conductornum").setValue(pass1).toString();
+                                        ArrayList<ContactModel> arrcont= new ArrayList<>();
 
                                         //arrcont.add(new ContactModel(name1,email1,pass1));
 
-                                        Toast.makeText(AdminControl.this, "Addded Sucessfully", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(Trip_collector_work.this, "Addded Sucessfully", Toast.LENGTH_SHORT).show();
                                         dialog.cancel();
 
                                     }
@@ -214,7 +200,7 @@ public class AdminControl extends AppCompatActivity {
 
                                 @Override
                                 public void onCancelled(@NonNull DatabaseError error) {
-                                    Toast.makeText(AdminControl.this, "Email has already registered", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(Trip_collector_work.this, "Email has already registered", Toast.LENGTH_SHORT).show();
 
                                 }
 

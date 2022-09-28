@@ -8,7 +8,7 @@
 
     android:orientation="vertical"
 
-    tools:context=".AdminControl">
+    tools:context=".Trip_collector_work">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiper"
@@ -31,7 +31,7 @@
             android:layout_marginTop="0dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="EMAIL"
+            android:text="Bus No"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:gravity="center"
             android:padding="5dp"
 
-            android:text="NAME"
+            android:text="C.name"
 
 
             android:textSize="25sp"
@@ -60,7 +60,7 @@
 
             android:fontFamily="monospace"
 
-            android:text="PASS"
+            android:text="ph.no"
             android:textSize="25sp"
 
             android:textStyle="bold" />
@@ -68,7 +68,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyler1"
+        android:id="@+id/recyler3"
         android:layout_width="match_parent"
         android:layout_height="663dp"
         android:layout_alignParentTop="true"

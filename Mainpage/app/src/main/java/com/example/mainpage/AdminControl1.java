@@ -1,11 +1,13 @@
 package com.example.mainpage;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +16,11 @@ import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -24,6 +31,7 @@ public class AdminControl1 extends AppCompatActivity {
 
     FloatingActionButton mAddAlarmFab, mAddPersonFab,mupdate;
 
+    DatabaseReference myRef = FirebaseDatabase.getInstance().getReferenceFromUrl("https://mainpage-1398d-default-rtdb.firebaseio.com/");
 
     ExtendedFloatingActionButton mAddFab;
 
@@ -124,6 +132,43 @@ public class AdminControl1 extends AppCompatActivity {
         recyclerView.setLayoutManager( new LinearLayoutManager( this));
         RecyclerContactAdapter_Trip_Collector adapter = new RecyclerContactAdapter_Trip_Collector(this,arrcont);
         recyclerView.setAdapter(adapter);
+
+        DatabaseReference myReff = FirebaseDatabase.getInstance().getReference().child("ticketcollectors");
+        myReff.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot data:snapshot.getChildren()) {
+                    String abc=data.getKey();
+                    Log.d("TAG",abc);
+                    String detail[] = new String[3];
+                    int i=0;
+                    for (DataSnapshot data2:snapshot.child(abc).getChildren()) {
+                        String abcd = data2.getValue().toString();
+                        detail[i++]=abcd;
+                        if(i==3){
+                            arrcont.add(new ContactModel(detail[0],detail[1],detail[2]));
+                            i=0;
+                        }
+//                        String name= data2.getChildren().getClass().getName().toString();
+//                        String email=data2.getValue().toString();
+                    }
+
+                }
+                adapter.notifyItemInserted(arrcont.size()-1);
+                recyclerView.scrollToPosition(arrcont.size()-1);
+                arrcont= new ArrayList<>();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+
+        });
+
+
+
         mAddPersonFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -146,11 +191,34 @@ public class AdminControl1 extends AppCompatActivity {
                             Toast.makeText(AdminControl1.this, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            arrcont.add(new ContactModel(name1,email1,pass1));
-                            adapter.notifyItemInserted(arrcont.size()-1);
-                            recyclerView.scrollToPosition(arrcont.size()-1);
-                            Toast.makeText(AdminControl1.this, "Addded Sucessfully", Toast.LENGTH_SHORT).show();
-                            dialog.cancel();
+                            myRef.child("ticketcollectors").addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.hasChild(email1)){
+                                        Toast.makeText(AdminControl1.this, "Email has already registered", Toast.LENGTH_SHORT).show();
+                                    }
+                                    else{
+                                        //Updating database
+
+                                        myRef.child("ticketcollectors").child(email1).child("email").setValue(name1).toString();
+                                        myRef.child("ticketcollectors").child(email1).child("name").setValue(email1).toString();
+                                        myRef.child("ticketcollectors").child(email1).child("password").setValue(pass1).toString();                ArrayList<ContactModel> arrcont= new ArrayList<>();
+
+                                        //arrcont.add(new ContactModel(name1,email1,pass1));
+
+                                        Toast.makeText(AdminControl1.this, "Addded Sucessfully", Toast.LENGTH_SHORT).show();
+                                        dialog.cancel();
+
+                                    }
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(AdminControl1.this, "Email has already registered", Toast.LENGTH_SHORT).show();
+
+                                }
+
+                            });
                         }
                     }
                 });

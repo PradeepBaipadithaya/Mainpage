@@ -38,7 +38,7 @@ public class AdminRegister extends AppCompatActivity {
         setContentView(R.layout.activity_admin_register);
         email=findViewById(R.id.admine);
         pass=findViewById(R.id.adminpass);
-        btn=findViewById(R.id.pass6);
+        btn=findViewById(R.id.tripbtn);
         btn2=findViewById(R.id.pass10);
 
         mAuth=FirebaseAuth.getInstance();

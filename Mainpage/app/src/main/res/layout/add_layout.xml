@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:fontFamily="monospace"
-
         android:textSize="32sp"
         android:textStyle="bold"
         android:textColor="@color/black"

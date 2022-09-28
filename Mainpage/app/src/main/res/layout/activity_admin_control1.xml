@@ -23,7 +23,7 @@
             android:layout_marginTop="0dp"
             android:fontFamily="monospace"
             android:gravity="center"
-            android:text="NAME"
+            android:text="EMAIL"
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -36,7 +36,7 @@
             android:gravity="center"
             android:padding="5dp"
 
-            android:text="EMAIL"
+            android:text="NAME"
 
 
             android:textSize="25sp"
@@ -146,10 +146,10 @@
             android:id="@+id/add_person_action_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
             android:text="Add Person"
-            app:layout_constraintBottom_toBottomOf="@+id/add_person_fab"
-            app:layout_constraintEnd_toStartOf="@+id/add_person_fab"
+            app:layout_constraintBottom_toTopOf="@+id/add_alarm_fab"
+            app:layout_constraintEnd_toStartOf="@+id/add_person_action_textt"
             app:layout_constraintTop_toTopOf="@+id/add_person_fab" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -172,7 +172,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            android:text="Update Person" app:layout_constraintBottom_toBottomOf="@+id/update_person"
+            android:text="Update Person"
+            app:layout_constraintBottom_toBottomOf="@+id/update_person"
             app:layout_constraintEnd_toStartOf="@+id/update_person"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/add_person_fab"

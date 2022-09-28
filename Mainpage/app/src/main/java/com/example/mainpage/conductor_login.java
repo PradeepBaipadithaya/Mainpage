@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import static com.example.mainpage.R.id.conductoremail;
 import static com.example.mainpage.R.id.coductorpass;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,18 +29,24 @@ public class conductor_login extends AppCompatActivity {
         setContentView(R.layout.activity_conductor_login);
         e1=findViewById(conductoremail);
         e2=findViewById(coductorpass);
-        b=findViewById(R.id.pass6);
+        b=findViewById(R.id.tripbtn);
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent i =new Intent(conductor_login.this, conductor_location.class);
+                startActivity(i);
                 String emailid=e1.getText().toString();
                 String passwd=e2.getText().toString();
-                myRef.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
+                myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
+
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if(snapshot.hasChild(emailid)){
-                            final String getpass=snapshot.child(emailid).child("pass").getValue(String.class);
+                            final String getpass=snapshot.child(emailid).child("password").getValue(String.class);
                             if(getpass.equals(passwd)){
+                                Intent i =new Intent(conductor_login.this, conductor_location.class);
+                                i.putExtra("conductor_email",emailid);
+                                startActivity(i);
                                 Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
                             }
                         }

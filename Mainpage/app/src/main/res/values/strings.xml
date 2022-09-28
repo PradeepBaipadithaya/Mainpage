@@ -1,5 +1,5 @@
 <resources>
-<!--    <string name="app_name">Mainpage</string>-->
+    <!--    <string name="app_name">Mainpage</string>-->
     <string name="app_name">LocationUpdatesJava</string>
 
     <string name="service_already_running">Service is already running</string>

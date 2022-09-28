@@ -95,7 +95,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/pass6"
+        android:id="@+id/tripbtn"
         android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"

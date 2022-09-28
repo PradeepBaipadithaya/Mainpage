@@ -17,7 +17,7 @@ android:background="@drawable/ui1"
         android:layout_marginTop="91dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="CONDUCTOR LOGIN"
+        android:text="TRIPCOLLECTOR LOGIN"
         android:textColor="@color/white"
         android:textSize="30dp"
 
@@ -33,6 +33,7 @@ android:background="@drawable/ui1"
         android:layout_marginTop="296dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tripcollectoremail"
             android:layout_width="400dp"
             android:layout_height="60dp"
             android:layout_alignParentStart="true"
@@ -40,9 +41,8 @@ android:background="@drawable/ui1"
             android:background="@drawable/mybutton1"
             android:drawableStart="@drawable/ic_mail"
             android:hint="Enter Email Id"
-            android:textSize="16dp"
             android:padding="10dp"
-            />
+            android:textSize="16dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -58,6 +58,7 @@ android:background="@drawable/ui1"
         >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/tripcollectorpass"
             android:layout_width="400dp"
             android:layout_height="60dp"
             android:background="@drawable/mybutton1"
@@ -65,14 +66,13 @@ android:background="@drawable/ui1"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textSize="16dp"
 
-            />
+            android:textSize="16dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/pass6"
+        android:id="@+id/tripbtn"
         android:layout_width="400dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"

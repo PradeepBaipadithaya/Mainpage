@@ -17,7 +17,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,11 +28,13 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class RecyclerContactAdapter_Trip_Collector extends RecyclerView.Adapter<RecyclerContactAdapter_Trip_Collector.ViewHolder> {
+public class RecyclerContactAdapter_Trip_Collector_work extends RecyclerView.Adapter<RecyclerContactAdapter_Trip_Collector_work.ViewHolder> {
     Context context;
-    DatabaseReference databaseReference;
+    Task<Void> databaseReference1;
+    Task<Void> databaseReference2;
+    Task<Void> databaseReference3;
     ArrayList<ContactModel> arrcont;
-    RecyclerContactAdapter_Trip_Collector(Context context, ArrayList<ContactModel> arrcont){
+    RecyclerContactAdapter_Trip_Collector_work(Context context, ArrayList<ContactModel> arrcont){
         this.arrcont=arrcont;
 this.context=context;
     }
@@ -49,7 +50,7 @@ this.context=context;
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 holder.name.setText(arrcont.get(position).name);
 
-         int pos=holder.getAdapterPosition();
+        int pos=holder.getAdapterPosition();
         holder.email.setText(arrcont.get(pos).email);
         holder.pass.setText(arrcont.get(pos).paswd);
         holder.llrow.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +64,7 @@ holder.name.setText(arrcont.get(position).name);
                 TextView textView=dialog.findViewById(R.id.updatetext);
                 Button btn=dialog.findViewById(R.id.Done);
                 btn.setText("Update");
-                textView.setText("Update TripCollector");
+                textView.setText("Update BUS Details");
                 name.setText((arrcont.get(pos)).name);
                 email.setText((arrcont.get(pos)).email);
                 pass.setText((arrcont.get(pos)).paswd);
@@ -75,28 +76,20 @@ holder.name.setText(arrcont.get(position).name);
                         String email1=email.getText().toString();
                         String pass1=pass.getText().toString();
                         HashMap conductors=new HashMap();
-                        conductors.put("email",email1);
-                        conductors.put("password",pass1);
-                        conductors.put("name",name1);
-                        databaseReference=FirebaseDatabase.getInstance().getReference("ticketcollectors");
+                        conductors.put("busnum",email1);
+                        conductors.put("conductorname",pass1);
+                        conductors.put("conductornum",name1);
                         if(name1.isEmpty() || email1.isEmpty() || pass1.isEmpty()){
                             Toast.makeText(context, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
                         }
                         else{
-                            databaseReference.child(name1).updateChildren(conductors).addOnCompleteListener(new OnCompleteListener() {
-                                @Override
-                                public void onComplete(@NonNull Task task) {
-                                    if(task.isSuccessful()){
-                                        name.setText(name1);
-                                        email.setText(email1);
-                                        pass.setText(pass1);
-                                    }
-                                    else{
-                                        Toast.makeText(context, "Failed to update", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            });
+                            databaseReference1=FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo").child(name1).child("busnum").setValue(name1);
+                            //databaseReference2=FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo").child(email1).getKey();
+                            databaseReference3=FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo").child(name1).child("conductornum").setValue(pass1);
+                            databaseReference2=FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo").child(name1).child("conductorname").setValue(email1);
+
                             arrcont.set(pos,new ContactModel(name1,email1,pass1));
+
                             notifyItemChanged(pos);
                             Toast.makeText(context, "Updated Sucessfully", Toast.LENGTH_SHORT).show();
                             dialog.cancel();
@@ -117,7 +110,7 @@ holder.name.setText(arrcont.get(position).name);
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String nameing=arrcont.get(pos).email;
 
-                        DatabaseReference myReff = FirebaseDatabase.getInstance().getReference().child("ticketcollectors");
+                        DatabaseReference myReff = FirebaseDatabase.getInstance().getReference().child("tripcollectorsinfo");
                         Query email=myReff.child(nameing);
                         myReff.addValueEventListener(new ValueEventListener() {
                             @Override

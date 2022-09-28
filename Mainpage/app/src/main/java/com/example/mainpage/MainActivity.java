@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
         loginp = findViewById(R.id.pass1);
         loginc = findViewById(R.id.pass2);
         logint = findViewById(R.id.pass3);
-        logina = findViewById(R.id.pass6);
+        logina = findViewById(R.id.tripbtn);
 
         logina.setOnClickListener(new View.OnClickListener() {
     @Override

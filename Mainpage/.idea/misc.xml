@@ -30,16 +30,20 @@
         <entry key="app/src/main/res/drawable/shadow1.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/shadow3.xml" value="0.265" />
         <entry key="app/src/main/res/layout/activity_admin_control.xml" value="0.35185185185185186" />
-        <entry key="app/src/main/res/layout/activity_admin_control1.xml" value="0.2453125" />
+        <entry key="app/src/main/res/layout/activity_admin_control1.xml" value="0.4" />
         <entry key="app/src/main/res/layout/activity_admin_login.xml" value="0.3619047619047619" />
         <entry key="app/src/main/res/layout/activity_admin_register.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/activity_admin_work.xml" value="0.32135416666666666" />
+        <entry key="app/src/main/res/layout/activity_conductor_location.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/activity_conductor_login.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="app/src/main/res/layout/activity_ticket_collector_bus.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/activity_ticket_collector_login.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/activity_trip_collector_work.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/activity_update_seclector_admin.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/add_layout.xml" value="0.3650887573964497" />
         <entry key="app/src/main/res/layout/add_layout_1.xml" value="0.2453125" />
+        <entry key="app/src/main/res/layout/add_layout_2.xml" value="0.32135416666666666" />
         <entry key="app/src/main/res/layout/contact_row.xml" value="0.2" />
         <entry key="app/src/main/res/layout/contact_view.xml" value="0.4" />
         <entry key="app/src/main/res/layout/login_conductor.xml" value="0.1484375" />
@@ -47,6 +51,7 @@
         <entry key="app/src/main/res/layout/login_passanger.xml" value="0.264" />
         <entry key="app/src/main/res/layout/passanger.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/tracking.xml" value="0.2957427536231884" />
+        <entry key="app/src/main/res/layout/trip_collector_view.xml" value="0.3203125" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.328" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.328" />
       </map>
