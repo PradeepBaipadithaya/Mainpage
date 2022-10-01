@@ -200,8 +200,8 @@ public class AdminControl1 extends AppCompatActivity {
                                     else{
                                         //Updating database
 
-                                        myRef.child("ticketcollectors").child(email1).child("email").setValue(name1).toString();
-                                        myRef.child("ticketcollectors").child(email1).child("name").setValue(email1).toString();
+                                        myRef.child("ticketcollectors").child(email1).child("email").setValue(email1).toString();
+                                        myRef.child("ticketcollectors").child(email1).child("name").setValue(name).toString();
                                         myRef.child("ticketcollectors").child(email1).child("password").setValue(pass1).toString();                ArrayList<ContactModel> arrcont= new ArrayList<>();
 
                                         //arrcont.add(new ContactModel(name1,email1,pass1));

@@ -44,13 +44,15 @@ public class passenger_start extends AppCompatActivity {
         startServiceBtn = findViewById(R.id.start_service_btn_1);
         stopServiceBtn = findViewById(R.id.stop_service_btn_1);
         map_start = findViewById(R.id.map_button);
-        reference_lat = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child("test");
+        String conductor_bus_num = getIntent().getStringExtra("conductor_bus_num");
+        reference_lat = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child(conductor_bus_num);
 
         map_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 try {
                     Intent intent = new Intent(passenger_start.this, passenger_locate.class);
+                    intent.putExtra("conductor_bus_num", conductor_bus_num);
                     startActivity(intent);
 
                 } catch (Exception e) {

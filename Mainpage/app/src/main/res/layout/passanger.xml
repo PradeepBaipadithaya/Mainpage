@@ -64,7 +64,7 @@
         android:layout_marginTop="358dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="OR"
+        android:text="AND"
         android:textColor="@color/white"
         android:textSize="30dp"
 

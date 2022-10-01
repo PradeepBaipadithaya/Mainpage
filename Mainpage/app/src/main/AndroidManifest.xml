@@ -54,6 +54,10 @@
             android:name=".ticket_collector_login"
             android:exported="false" />
         <activity
+            android:name=".Trip_collector_work"
+            android:exported="false" />
+
+        <activity
             android:name=".conductor_login"
             android:exported="false" />
         <activity

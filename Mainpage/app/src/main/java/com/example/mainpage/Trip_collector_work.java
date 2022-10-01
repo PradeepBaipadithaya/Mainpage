@@ -172,6 +172,7 @@ public class Trip_collector_work extends AppCompatActivity {
                         String name1=name.getText().toString();
                         String email1=email.getText().toString();
                         String pass1=pass.getText().toString();
+                        String key = name1+"_"+pass1;
                         if(name1.isEmpty() || email1.isEmpty() || pass1.isEmpty()){
                             Toast.makeText(Trip_collector_work.this, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
                         }
@@ -185,9 +186,9 @@ public class Trip_collector_work extends AppCompatActivity {
                                     else{
                                         //Updating database
 
-                                        myRef.child("tripcollectorsinfo").child(name1).child("busnum").setValue(name1).toString();
-                                        myRef.child("tripcollectorsinfo").child(name1).child("conductorname").setValue(email1).toString();
-                                        myRef.child("tripcollectorsinfo").child(name1).child("conductornum").setValue(pass1).toString();
+                                        myRef.child("tripcollectorsinfo").child(key).child("busnum").setValue(name1).toString();
+                                        myRef.child("tripcollectorsinfo").child(key).child("conductoremail").setValue(email1).toString();
+                                        myRef.child("tripcollectorsinfo").child(key).child("conductornum").setValue(pass1).toString();
                                         ArrayList<ContactModel> arrcont= new ArrayList<>();
 
                                         //arrcont.add(new ContactModel(name1,email1,pass1));

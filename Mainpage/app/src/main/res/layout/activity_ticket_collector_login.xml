@@ -17,7 +17,7 @@ android:background="@drawable/ui1"
         android:layout_marginTop="91dp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
-        android:text="CONDUCTOR LOGIN"
+        android:text="TICKET COLLECTOR LOGIN"
         android:textColor="@color/white"
         android:textSize="30dp"
 

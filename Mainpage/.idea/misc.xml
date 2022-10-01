@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_control.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_control1.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_register.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_admin_work.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_conductor_location.xml" value="0.22826086956521738" />
@@ -11,7 +12,9 @@
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_passenger_locate.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_passenger_start.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_ticket_collector_bus.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_ticket_collector_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_trip_collector_work.xml" value="0.1" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/activity_update_seclector_admin.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/add_layout.xml" value="0.22826086956521738" />
         <entry key="..\:/Pr@deep/Projects/NWRTC-Vehicle-Tracking/Mainpage/app/src/main/res/layout/add_layout_1.xml" value="0.22826086956521738" />

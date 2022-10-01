@@ -184,8 +184,8 @@ public class AdminControl extends AppCompatActivity {
                 btn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String name1=name.getText().toString();
-                        String email1=email.getText().toString();
+                        String email1=name.getText().toString();
+                        String name1=email.getText().toString();
                         String pass1=pass.getText().toString();
                         if(name1.isEmpty() || email1.isEmpty() || pass1.isEmpty()){
                             Toast.makeText(AdminControl.this, "Please Fill The Box To Add", Toast.LENGTH_SHORT).show();
@@ -200,8 +200,8 @@ public class AdminControl extends AppCompatActivity {
                                     else{
                                         //Updating database
 
-                                        myRef.child("conductors").child(email1).child("email").setValue(name1).toString();
-                                       myRef.child("conductors").child(email1).child("name").setValue(email1).toString();
+                                        myRef.child("conductors").child(email1).child("email").setValue(email1).toString();
+                                       myRef.child("conductors").child(email1).child("name").setValue(name1).toString();
                                         myRef.child("conductors").child(email1).child("password").setValue(pass1).toString();                ArrayList<ContactModel> arrcont= new ArrayList<>();
 
                                         //arrcont.add(new ContactModel(name1,email1,pass1));

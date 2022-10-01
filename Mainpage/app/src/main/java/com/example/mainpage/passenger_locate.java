@@ -3,9 +3,7 @@ package com.example.mainpage;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 
-import android.content.Intent;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -15,6 +13,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -36,9 +35,11 @@ import com.google.maps.model.DirectionsStep;
 import com.google.maps.model.EncodedPolyline;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.TreeSet;
 
-public class passenger_locate extends FragmentActivity implements OnMapReadyCallback {
+public class passenger_locate extends FragmentActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener {
 
     private GoogleMap mMap;
     private ActivityPassengerLocateBinding binding;
@@ -52,9 +53,13 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
     public double locationLat_user=19.132;
     public double locationLong_user=60.21;
 
-    Double lat_val = locationLat;
-    Double long_val = locationLong;
     Polyline polyline;
+
+    public int num;
+    float[] value = new float[100];
+
+    ArrayList dist_set = new ArrayList();
+    ArrayList time = new ArrayList();
 
 
     @Override
@@ -72,10 +77,12 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        String conductor_bus_num = getIntent().getStringExtra("conductor_bus_num");
+
 //        Toast.makeText(this, ""+locationLat, Toast.LENGTH_SHORT).show();
 //        Toast.makeText(this, ""+locationLong, Toast.LENGTH_SHORT).show();
 
-        reference_bus = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child("test");
+        reference_bus = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Conductor").child(conductor_bus_num);
         reference_user = FirebaseDatabase.getInstance("https://mainpage-1398d-default-rtdb.firebaseio.com/").getReference("Location details").child("Passenger").child("testing");
         try {
             read_user_location();
@@ -176,9 +183,14 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
 
         // Add a marker in Sydney and move the camera
 //        LatLng madrid = new LatLng(40.416775,-3.70379);
+
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.bus_top));
+        markerOptions.anchor((float) 0.5,(float) 0.5);
         LatLng currentLocation = new LatLng(locationLat, locationLong);
-        myMarker = mMap.addMarker(new MarkerOptions().position(currentLocation).title("Bus Location"));
+        myMarker = mMap.addMarker(markerOptions.position(currentLocation).title("Bus Location"));
         myMarker_user = mMap.addMarker(new MarkerOptions().position(currentLocation).title("Your Location"));
+        googleMap.setOnMarkerClickListener(this);
         CameraUpdate center = CameraUpdateFactory.newLatLng(new LatLng(locationLat, locationLong));
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(7);
         mMap.moveCamera(center);
@@ -187,10 +199,10 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
 //        read_location();
     }
 
-    private void rout() {
 
-//Double lat = locationLat;
-//Double lat = locationLat;
+
+
+    private void rout() {
         List<LatLng> path = new ArrayList();
 
         //Execute Directions API request
@@ -206,15 +218,29 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
 //        DirectionsApiRequest req = DirectionsApi.getDirections(context, "12.32421,75.23423", "13.231231,76.23421");
         try {
             DirectionsResult res = req.await();
-
             //Loop through legs and steps to get encoded polylines of each step
             if (res.routes != null && res.routes.length > 0) {
                 DirectionsRoute route = res.routes[0];
-
+//                Toast.makeText(this, ""+route, Toast.LENGTH_SHORT).show();
                 if (route.legs !=null) {
                     for(int i=0; i<route.legs.length; i++) {
+                        num = route.legs.length;
                         DirectionsLeg leg = route.legs[i];
+                        try {
+
+                            String s = leg.distance.humanReadable;
+                            String time_val = leg.duration.humanReadable;
+//                            String dist;
+                            String[] dist =s.split(" ");
+//                            Toast.makeText(this, ""+time_val, Toast.LENGTH_SHORT).show();
+                            dist_set.add(Double.parseDouble(dist[0]));
+                            time.add(time_val);
+
+                        }catch (Exception e){
+//                            Toast.makeText(this, ""+e, Toast.LENGTH_SHORT).show();
+                        }
                         if (leg.steps != null) {
+//                            Toast.makeText(this, ""+leg.steps.length, Toast.LENGTH_LONG).show();
                             for (int j=0; j<leg.steps.length;j++){
                                 DirectionsStep step = leg.steps[j];
                                 if (step.steps != null && step.steps.length >0) {
@@ -227,8 +253,11 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
                                             for (com.google.maps.model.LatLng coord1 : coords1) {
                                                 path.add(new LatLng(coord1.lat, coord1.lng));
                                             }
+//                                            String s =step.distance.humanReadable;
+
                                         }
                                     }
+
                                 } else {
                                     EncodedPolyline points = step.polyline;
                                     if (points != null) {
@@ -240,18 +269,22 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
                                     }
                                 }
                             }
+
                         }
+
                     }
+
                 }
-            }
+                }
         } catch(Exception ex) {
             Log.e("tag", ex.getLocalizedMessage());
         }
 
         //Draw the polyline
         if (path.size() > 0) {
-            PolylineOptions opts = new PolylineOptions().addAll(path).color(Color.BLUE).width(5);
+            PolylineOptions opts = new PolylineOptions().addAll(path).color(Color.BLUE).width(7);
             polyline =mMap.addPolyline(opts);
+
 
         }
 
@@ -259,4 +292,20 @@ public class passenger_locate extends FragmentActivity implements OnMapReadyCall
     }
 
 
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        if (marker.equals(myMarker))
+        {
+            myMarker.setTitle("Bus Location");
+            myMarker.setSnippet("Distance: "+dist_set.get(num)+", "+"Expected Time: "+time.get(num));
+
+//            Toast.makeText(this, "Expected Distance: "+dist_set.get(num), Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Expected Time: "+time.get(num), Toast.LENGTH_LONG).show();
+        }
+        if (marker.equals(myMarker_user))
+        {
+            myMarker_user.setTitle("Your location");
+        }
+        return false;
+    }
 }

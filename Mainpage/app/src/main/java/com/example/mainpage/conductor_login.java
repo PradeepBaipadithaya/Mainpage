@@ -33,34 +33,37 @@ public class conductor_login extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String emailid=e1.getText().toString();
-                String passwd=e2.getText().toString();
-                myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.hasChild(emailid)){
-                            final String getpass=snapshot.child(emailid).child("password").getValue(String.class);
-                            if(getpass.equals(passwd)){
-                                Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(conductor_login.this,conductor_location.class);
-                                intent.putExtra("conductor_email", emailid);
-                                startActivity(intent);
+                try {
+                    String emailid = e1.getText().toString();
+                    String passwd = e2.getText().toString();
+                    myRef.child("conductors").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if (snapshot.hasChild(emailid)) {
+                                final String getpass = snapshot.child(emailid).child("password").getValue(String.class);
+                                if (getpass.equals(passwd)) {
+                                    Toast.makeText(conductor_login.this, "Done", Toast.LENGTH_SHORT).show();
+                                    Intent intent = new Intent(conductor_login.this, conductor_location.class);
+                                    intent.putExtra("conductor_email", emailid);
+                                    startActivity(intent);
+                                }
+                            } else {
+                                Toast.makeText(conductor_login.this, "Fuck off", Toast.LENGTH_SHORT).show();
+
+
                             }
                         }
-                        else{
-                            Toast.makeText(conductor_login.this, "Fuck off", Toast.LENGTH_SHORT).show();
 
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            Toast.makeText(conductor_login.this, "Pleass", Toast.LENGTH_SHORT).show();
 
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        Toast.makeText(conductor_login.this, "Pleass", Toast.LENGTH_SHORT).show();
-
-                    }
-
-                });
+                    });
+                } catch (Exception e) {
+                    Toast.makeText(conductor_login.this, "" + e, Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

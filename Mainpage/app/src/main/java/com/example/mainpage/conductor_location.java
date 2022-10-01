@@ -1,10 +1,5 @@
 package com.example.mainpage;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,8 +12,30 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
+
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.HttpResponse;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.HttpClient;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.client.methods.HttpPost;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.impl.client.DefaultHttpClient;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.protocol.BasicHttpContext;
+import com.google.firebase.crashlytics.buildtools.reloc.org.apache.http.protocol.HttpContext;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import java.io.File;
 import java.io.FileWriter;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class conductor_location extends AppCompatActivity {
     private static int MY_FINE_LOCATION_REQUEST = 99;
@@ -28,7 +45,7 @@ public class conductor_location extends AppCompatActivity {
     Intent mServiceIntent;
 
     Button startServiceBtn, stopServiceBtn;
-//    String conductor_email = getIntent().getStringExtra("conductor_email");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -222,5 +239,6 @@ public class conductor_location extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
 }
